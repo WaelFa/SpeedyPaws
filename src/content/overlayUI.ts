@@ -3,7 +3,9 @@
  * Creates and manages the floating speed controller overlay on YouTube
  */
 
-import { MIN_SPEED, MAX_SPEED, SpeedProfile } from '../types';
+// Speed bounds
+const MIN_SPEED = 0.1;
+const MAX_SPEED = 5.0;
 import { SpeedController } from './speedController';
 
 export class OverlayUI {

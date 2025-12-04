@@ -14,15 +14,7 @@ export default defineConfig({
       },
       output: {
         entryFileNames: '[name].js',
-        chunkFileNames: '[name]-[hash].js',
-        assetFileNames: '[name].[ext]',
         format: 'es',
-        // Key: prevent chunking by inlining everything
-        manualChunks: () => undefined,
-      },
-      // Treeshake to remove unused exports
-      treeshake: {
-        moduleSideEffects: true,
       },
     },
     // Don't minify for debugging

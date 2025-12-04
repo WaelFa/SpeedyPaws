@@ -36,26 +36,8 @@ export interface SpeedyPawsSettings {
   overlayPosition: { x: number; y: number };
 }
 
-// Default settings
-export const DEFAULT_SETTINGS: SpeedyPawsSettings = {
-  smartSpeedEnabled: false,
-  rememberChannel: true,
-  rememberVideo: true,
-  showOverlay: true,
-  currentProfile: 'custom',
-  defaultSpeed: 1.0,
-  profiles: {
-    study: 0.75,
-    chill: 1.0,
-    review: 1.75,
-  },
-  channelSpeeds: {},
-  videoSpeeds: {},
-  overlayPosition: { x: 20, y: 80 },
-};
-
 // Message types for communication between scripts
-export type MessageType = 
+export type MessageType =
   | 'GET_SPEED'
   | 'SET_SPEED'
   | 'GET_SETTINGS'
@@ -89,9 +71,4 @@ export interface VideoInfo {
   channelName: string;
   title: string;
 }
-
-// Speed bounds
-export const MIN_SPEED = 0.1;
-export const MAX_SPEED = 5.0;
-export const SPEED_STEP = 0.1;
 

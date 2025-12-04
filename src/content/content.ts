@@ -4,15 +4,32 @@
  * Initializes speed controller and overlay UI
  */
 
-import { 
-  SpeedyPawsSettings, 
-  DEFAULT_SETTINGS, 
-  Message, 
+import {
+  SpeedyPawsSettings,
+  Message,
   SpeedChangePayload,
-  SpeedProfile 
+  SpeedProfile
 } from '../types';
 import { getSpeedController, SpeedController } from './speedController';
 import { OverlayUI } from './overlayUI';
+
+// Default settings
+const DEFAULT_SETTINGS: SpeedyPawsSettings = {
+  smartSpeedEnabled: false,
+  rememberChannel: true,
+  rememberVideo: true,
+  showOverlay: true,
+  currentProfile: 'custom',
+  defaultSpeed: 1.0,
+  profiles: {
+    study: 0.75,
+    chill: 1.0,
+    review: 1.75,
+  },
+  channelSpeeds: {},
+  videoSpeeds: {},
+  overlayPosition: { x: 20, y: 80 },
+};
 
 class SpeedyPawsContent {
   private controller: SpeedController;

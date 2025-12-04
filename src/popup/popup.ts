@@ -3,15 +3,34 @@
  * Handles popup UI interactions and communication with content script
  */
 
-import { 
-  SpeedyPawsSettings, 
-  DEFAULT_SETTINGS, 
-  Message, 
-  SpeedProfile,
-  MIN_SPEED,
-  MAX_SPEED,
-  SPEED_STEP
+import {
+  SpeedyPawsSettings,
+  Message,
+  SpeedProfile
 } from '../types';
+
+// Speed bounds
+const MIN_SPEED = 0.1;
+const MAX_SPEED = 5.0;
+const SPEED_STEP = 0.1;
+
+// Default settings
+const DEFAULT_SETTINGS: SpeedyPawsSettings = {
+  smartSpeedEnabled: false,
+  rememberChannel: true,
+  rememberVideo: true,
+  showOverlay: true,
+  currentProfile: 'custom',
+  defaultSpeed: 1.0,
+  profiles: {
+    study: 0.75,
+    chill: 1.0,
+    review: 1.75,
+  },
+  channelSpeeds: {},
+  videoSpeeds: {},
+  overlayPosition: { x: 20, y: 80 },
+};
 
 class PopupController {
   private settings: SpeedyPawsSettings = DEFAULT_SETTINGS;

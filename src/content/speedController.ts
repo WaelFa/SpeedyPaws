@@ -3,7 +3,10 @@
  * Handles YouTube video playback speed manipulation
  */
 
-import { MIN_SPEED, MAX_SPEED, SPEED_STEP, VideoInfo } from '../types';
+// Speed bounds
+const MIN_SPEED = 0.1;
+const MAX_SPEED = 5.0;
+const SPEED_STEP = 0.1;
 
 export class SpeedController {
   private video: HTMLVideoElement | null = null;

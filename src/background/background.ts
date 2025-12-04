@@ -3,7 +3,25 @@
  * Handles extension lifecycle, keyboard commands, and cross-tab coordination
  */
 
-import { Message, VideoInfo, DEFAULT_SETTINGS, SpeedyPawsSettings } from '../types';
+import { Message, VideoInfo, SpeedyPawsSettings } from '../types';
+
+// Default settings
+const DEFAULT_SETTINGS: SpeedyPawsSettings = {
+  smartSpeedEnabled: false,
+  rememberChannel: true,
+  rememberVideo: true,
+  showOverlay: true,
+  currentProfile: 'custom',
+  defaultSpeed: 1.0,
+  profiles: {
+    study: 0.75,
+    chill: 1.0,
+    review: 1.75,
+  },
+  channelSpeeds: {},
+  videoSpeeds: {},
+  overlayPosition: { x: 20, y: 80 },
+};
 
 // Track current video info per tab
 const tabVideoInfo: Map<number, VideoInfo> = new Map();
