@@ -83,12 +83,17 @@ export class OverlayUI {
     return `
       <div class="speedypaws-header">
         <span class="speedypaws-paw" aria-label="Paw logo">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 36 36" fill="none" aria-hidden="true" focusable="false">
-            <ellipse cx="18" cy="28" rx="7" ry="6" fill="#FFB5C5" />
-            <ellipse cx="8" cy="20" rx="3" ry="4" fill="#FFB5C5" />
-            <ellipse cx="28" cy="20" rx="3" ry="4" fill="#FFB5C5" />
-            <ellipse cx="12" cy="11" rx="2.1" ry="3.1" fill="#FFB5C5" />
-            <ellipse cx="24" cy="11" rx="2.1" ry="3.1" fill="#FFB5C5" />
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 100 100" fill="url(#gradAsset)" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="gradAsset" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#FF8FAB"/>
+                <stop offset="100%" style="stop-color:#B19CD9"/>
+              </linearGradient>
+            </defs>
+            <path d="M50 55 C35 55, 25 65, 25 78 C25 88, 38 95, 50 95 C62 95, 75 88, 75 78 C75 65, 65 55, 50 55 Z"/>
+            <ellipse cx="28" cy="45" rx="10" ry="12" transform="rotate(-20 28 45)"/>
+            <ellipse cx="50" cy="35" rx="11" ry="13"/>
+            <ellipse cx="72" cy="45" rx="10" ry="12" transform="rotate(20 72 45)"/>
           </svg>
         </span>
         <span class="speedypaws-title">SpeedyPaws</span>
@@ -134,7 +139,20 @@ export class OverlayUI {
     this.toast = document.createElement('div');
     this.toast.className = 'speedypaws-toast';
     this.toast.innerHTML = `
-      <span class="speedypaws-toast-paw">🐾</span>
+      <span class="speedypaws-toast-paw">
+        <svg width="16" height="16" viewBox="0 0 100 100" fill="url(#gradAsset)" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="gradAsset" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#F472B6"/>
+              <stop offset="100%" style="stop-color:#A78BFA"/>
+            </linearGradient>
+          </defs>
+          <path d="M50 55 C35 55, 25 65, 25 78 C25 88, 38 95, 50 95 C62 95, 75 88, 75 78 C75 65, 65 55, 50 55 Z"/>
+          <ellipse cx="28" cy="45" rx="10" ry="12" transform="rotate(-20 28 45)"/>
+          <ellipse cx="50" cy="35" rx="11" ry="13"/>
+          <ellipse cx="72" cy="45" rx="10" ry="12" transform="rotate(20 72 45)"/>
+        </svg>
+      </span>
       <span>Speed: </span>
       <span class="speedypaws-toast-speed">1.0x</span>
     `;

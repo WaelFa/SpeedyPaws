@@ -40,26 +40,11 @@ async function initDefaultSettings(): Promise<void> {
 
 /**
  * Setup keyboard command listeners
+ * Note: Keyboard shortcuts are handled directly in content script
  */
 function setupCommandListeners(): void {
-  chrome.commands.onCommand.addListener(async (command) => {
-    console.log('[SpeedyPaws Background] Command received:', command);
-    
-    // Get active tab
-    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-    if (!tab?.id || !tab.url?.includes('youtube.com')) return;
-
-    // Send message to content script
-    try {
-      if (command === 'increase-speed') {
-        await chrome.tabs.sendMessage(tab.id, { type: 'INCREASE_SPEED' });
-      } else if (command === 'decrease-speed') {
-        await chrome.tabs.sendMessage(tab.id, { type: 'DECREASE_SPEED' });
-      }
-    } catch (error) {
-      console.warn('[SpeedyPaws Background] Could not send command to tab:', error);
-    }
-  });
+  // Keyboard shortcuts are handled in content script via document.addEventListener('keydown')
+  // No need for chrome.commands API since we removed commands from manifest
 }
 
 /**

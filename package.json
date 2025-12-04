@@ -4,8 +4,8 @@
   "description": "🐾 Cute YouTube playback speed controller with smart features",
   "type": "module",
   "scripts": {
-    "dev": "node scripts/vite-build.js && node scripts/build.js",
-    "build": "node scripts/vite-build.js && node scripts/build.js",
+    "dev": "vite build --watch",
+    "build": "vite build",
     "clean": "rm -rf dist"
   },
   "devDependencies": {

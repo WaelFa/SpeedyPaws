@@ -258,22 +258,27 @@ class PopupController {
    * Send message to content script in active tab
    */
   private async sendToContent(message: Message): Promise<Record<string, unknown> | null> {
-    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-    
-    if (!tab?.id || !tab.url?.includes('youtube.com')) {
+    try {
+      const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+
+      if (!tab?.id || !tab.url?.includes('youtube.com')) {
+        return null;
+      }
+
+      return new Promise((resolve) => {
+        chrome.tabs.sendMessage(tab.id!, message, (response) => {
+          if (chrome.runtime.lastError) {
+            console.warn('Could not send message:', chrome.runtime.lastError.message || chrome.runtime.lastError);
+            resolve(null);
+          } else {
+            resolve(response as Record<string, unknown>);
+          }
+        });
+      });
+    } catch (error) {
+      console.warn('Error sending message to content script:', error);
       return null;
     }
-
-    return new Promise((resolve) => {
-      chrome.tabs.sendMessage(tab.id!, message, (response) => {
-        if (chrome.runtime.lastError) {
-          console.warn('Could not send message:', chrome.runtime.lastError);
-          resolve(null);
-        } else {
-          resolve(response as Record<string, unknown>);
-        }
-      });
-    });
   }
 }
 
