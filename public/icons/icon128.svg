@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <!-- Background gradient for the container -->
+    <linearGradient id="bgGrad128" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF"/>
+      <stop offset="100%" style="stop-color:#FFFFFF"/>
+    </linearGradient>
+
+    <!-- Paw gradient -->
+    <linearGradient id="pawGrad128" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F472B6"/>
+      <stop offset="100%" style="stop-color:#A78BFA"/>
+    </linearGradient>
+
+    <!-- Shadow filter -->
+    <filter id="shadow128" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.2"/>
+    </filter>
+
+    <!-- Border gradient -->
+    <linearGradient id="borderGrad128" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F4F4F5"/>
+      <stop offset="100%" style="stop-color:#F4F4F5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle with shadow -->
+  <circle cx="128" cy="128" r="124" fill="url(#bgGrad128)" filter="url(#shadow128)"/>
+
+  <!-- Border -->
+  <circle cx="128" cy="128" r="123" fill="none" stroke="url(#borderGrad128)" stroke-width="2"/>
+
+  <!-- Paw icon -->
+  <g transform="translate(128,128)">
+    <path d="M0 48 C-48 48, -80 80, -80 124 C-80 156, -24 176, 0 176 C24 176, 80 156, 80 124 C80 80, 48 48, 0 48 Z" fill="url(#pawGrad128)"/>
+    <ellipse cx="-70" cy="16" rx="32" ry="38" transform="rotate(-20 -70 16)" fill="url(#pawGrad128)"/>
+    <ellipse cx="0" cy="-16" rx="36" ry="42" fill="url(#pawGrad128)"/>
+    <ellipse cx="70" cy="16" rx="32" ry="38" transform="rotate(20 70 16)" fill="url(#pawGrad128)"/>
+  </g>
+</svg>

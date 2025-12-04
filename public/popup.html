@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpeedyPaws</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header with cute paw logo -->
+    <header class="header">
+      <div class="logo">
+        <span class="paw">🐾</span>
+        <h1>SpeedyPaws</h1>
+      </div>
+      <span class="version">v1.0</span>
+    </header>
+
+    <!-- Current Speed Display -->
+    <section class="speed-display">
+      <div class="speed-value">
+        <span id="currentSpeed">1.0</span>x
+      </div>
+      <p class="speed-label">Current Speed</p>
+    </section>
+
+    <!-- Speed Controls -->
+    <section class="speed-controls">
+      <button id="decreaseSpeed" class="speed-btn decrease" title="Decrease (Shift + <)">
+        <span>−</span>
+      </button>
+      <input type="range" id="speedSlider" min="0.1" max="5" step="0.1" value="1">
+      <button id="increaseSpeed" class="speed-btn increase" title="Increase (Shift + >)">
+        <span>+</span>
+      </button>
+    </section>
+
+    <!-- Quick Speed Presets -->
+    <section class="presets">
+      <button class="preset-btn" data-speed="0.5">0.5x</button>
+      <button class="preset-btn" data-speed="1">1x</button>
+      <button class="preset-btn" data-speed="1.5">1.5x</button>
+      <button class="preset-btn" data-speed="2">2x</button>
+      <button class="preset-btn" data-speed="3">3x</button>
+    </section>
+
+    <!-- Speed Profiles -->
+    <section class="profiles">
+      <h3>🎯 Speed Profiles</h3>
+      <div class="profile-buttons">
+        <button class="profile-btn" data-profile="study" title="Slower for learning">
+          <span class="emoji">📚</span>
+          <span>Study</span>
+        </button>
+        <button class="profile-btn" data-profile="chill" title="Normal pace">
+          <span class="emoji">☕</span>
+          <span>Chill</span>
+        </button>
+        <button class="profile-btn" data-profile="review" title="Faster for review">
+          <span class="emoji">⚡</span>
+          <span>Review</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Smart Features -->
+    <section class="features">
+      <h3>✨ Smart Features</h3>
+      
+      <label class="toggle-row">
+        <span class="toggle-label">
+          <span class="emoji">🧠</span>
+          Smart Speed Mode
+        </span>
+        <input type="checkbox" id="smartSpeedToggle" class="toggle-input">
+        <span class="toggle-slider"></span>
+      </label>
+      <p class="feature-hint">Auto-adjusts based on speech density</p>
+
+      <label class="toggle-row">
+        <span class="toggle-label">
+          <span class="emoji">💾</span>
+          Remember per channel
+        </span>
+        <input type="checkbox" id="rememberChannelToggle" class="toggle-input" checked>
+        <span class="toggle-slider"></span>
+      </label>
+
+      <label class="toggle-row">
+        <span class="toggle-label">
+          <span class="emoji">🎬</span>
+          Remember per video
+        </span>
+        <input type="checkbox" id="rememberVideoToggle" class="toggle-input" checked>
+        <span class="toggle-slider"></span>
+      </label>
+
+      <label class="toggle-row">
+        <span class="toggle-label">
+          <span class="emoji">👁️</span>
+          Show overlay
+        </span>
+        <input type="checkbox" id="showOverlayToggle" class="toggle-input" checked>
+        <span class="toggle-slider"></span>
+      </label>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Keyboard: <kbd>Shift</kbd> + <kbd>&gt;</kbd> / <kbd>&lt;</kbd></p>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
+

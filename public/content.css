@@ -1,0 +1,313 @@
+/* SpeedyPaws Content Script Styles - YouTube Overlay */
+
+/* Variables */
+:root {
+  --sp-pink-soft: #FFB5C5;
+  --sp-pink-light: #FFE4EC;
+  --sp-lavender: #E8DAEF;
+  --sp-accent-pink: #FF8FAB;
+  --sp-accent-purple: #B19CD9;
+  --sp-text-primary: #5D5A6D;
+  --sp-shadow: 0 4px 20px rgba(147, 128, 165, 0.3);
+}
+
+/* Main Floating Controller */
+.speedypaws-controller {
+  position: fixed;
+  z-index: 2147483647;
+  background: linear-gradient(135deg, #FFFFFF 0%, var(--sp-pink-light) 100%);
+  border-radius: 16px;
+  padding: 12px 16px;
+  box-shadow: var(--sp-shadow);
+  font-family: 'Nunito', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  user-select: none;
+  cursor: move;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 2px solid var(--sp-pink-soft);
+}
+
+.speedypaws-controller:hover {
+  box-shadow: 0 6px 24px rgba(147, 128, 165, 0.4);
+}
+
+.speedypaws-controller.dragging {
+  transform: scale(1.02);
+  opacity: 0.95;
+}
+
+/* Controller Header */
+.speedypaws-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--sp-pink-soft);
+}
+
+.speedypaws-paw {
+  font-size: 18px;
+  animation: pawWiggle 2s ease-in-out infinite;
+}
+
+@keyframes pawWiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+}
+
+.speedypaws-title {
+  font-size: 14px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--sp-accent-pink), var(--sp-accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.speedypaws-close {
+  margin-left: auto;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: var(--sp-lavender);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--sp-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.speedypaws-close:hover {
+  background: var(--sp-accent-pink);
+  color: white;
+}
+
+/* Speed Display */
+.speedypaws-speed-display {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.speedypaws-speed-value {
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--sp-accent-pink), var(--sp-accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.speedypaws-speed-suffix {
+  font-size: 16px;
+  color: var(--sp-text-primary);
+  font-weight: 600;
+}
+
+/* Speed Controls */
+.speedypaws-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.speedypaws-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.speedypaws-btn-decrease {
+  background: #D6EAF8;
+  color: #5DADE2;
+}
+
+.speedypaws-btn-increase {
+  background: #D5F5E3;
+  color: #58D68D;
+}
+
+.speedypaws-btn:hover {
+  transform: scale(1.15);
+}
+
+.speedypaws-btn:active {
+  transform: scale(0.95);
+}
+
+/* Slider */
+.speedypaws-slider {
+  flex: 1;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(to right, #D6EAF8, var(--sp-lavender), var(--sp-pink-soft));
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+.speedypaws-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border: 2px solid var(--sp-accent-pink);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: all 0.2s ease;
+}
+
+.speedypaws-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Mini Toast Notification */
+.speedypaws-toast {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  background: linear-gradient(135deg, #FFFFFF 0%, var(--sp-pink-light) 100%);
+  border: 2px solid var(--sp-pink-soft);
+  border-radius: 24px;
+  padding: 10px 20px;
+  font-family: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sp-text-primary);
+  box-shadow: var(--sp-shadow);
+  z-index: 2147483647;
+  opacity: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.speedypaws-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.speedypaws-toast-paw {
+  font-size: 16px;
+}
+
+.speedypaws-toast-speed {
+  background: linear-gradient(135deg, var(--sp-accent-pink), var(--sp-accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+/* Profile indicator badge */
+.speedypaws-profile-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: var(--sp-lavender);
+  color: var(--sp-text-primary);
+  margin-left: auto;
+}
+
+/* Quick presets row */
+.speedypaws-presets {
+  display: flex;
+  gap: 4px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--sp-pink-soft);
+}
+
+.speedypaws-preset {
+  flex: 1;
+  padding: 6px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  background: white;
+  color: var(--sp-text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.speedypaws-preset:hover {
+  background: var(--sp-lavender);
+}
+
+.speedypaws-preset.active {
+  background: linear-gradient(135deg, var(--sp-accent-pink), var(--sp-accent-purple));
+  color: white;
+}
+
+/* Animations for showing/hiding */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+}
+
+.speedypaws-controller.entering {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+.speedypaws-controller.exiting {
+  animation: slideOut 0.2s ease-in forwards;
+}
+
+/* Smart Speed indicator */
+.speedypaws-smart-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: var(--sp-accent-purple);
+  margin-top: 6px;
+}
+
+.speedypaws-smart-indicator::before {
+  content: '🧠';
+  font-size: 12px;
+}
+
+/* Hide controller when video is fullscreen (optional) */
+.ytp-fullscreen .speedypaws-controller {
+  opacity: 0.3;
+}
+
+.ytp-fullscreen .speedypaws-controller:hover {
+  opacity: 1;
+}
+
